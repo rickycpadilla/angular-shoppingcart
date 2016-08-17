@@ -17,11 +17,11 @@ app.config(function($routeProvider) {
 HOME
 - Search by category X
 - Search by name X
-- Sort by price
+- Sort by price X
 - Add to cart
-- tweaks:
-  - currency
-  - in stock
+- tweaks: X
+  - currency X
+  - in stock X
 
 CART
 -
