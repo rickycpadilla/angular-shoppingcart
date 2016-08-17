@@ -11,3 +11,18 @@ app.config(function($routeProvider) {
         controller: 'CartController'
       })
 });
+
+/*
+
+HOME
+- Search by category
+- Search by name
+- Sort by price
+- Add to cart
+- tweaks:
+  - currency
+  - in stock
+
+CART
+-
+*/

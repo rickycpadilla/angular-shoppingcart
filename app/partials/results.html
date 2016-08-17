@@ -6,7 +6,7 @@
         <th>Information</th>
       </tr>
     </thead>
-    <tbody ng-repeat="info in data" >
+    <tbody ng-repeat="info in data | filter : category" >
       <tr>
         <td><img src="{{info.imageUrl}}" alt="" /></td>
         <td>
