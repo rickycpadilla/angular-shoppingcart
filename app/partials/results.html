@@ -4,10 +4,17 @@
       <tr>
         <th>Tea</th>
         <th>Information
+          <span style="float: right">
+            Sort by Price:
+            <select ng-model="price" class="" name="">
+              <option value="+price">lowest to highest</option>
+              <option value="-price">highest to lowest</option>
+            </select>
+          </span>
         </th>
       </tr>
     </thead>
-    <tbody ng-repeat="info in data | filter : {categories: category} | filter: {name: searchTerm}" >
+    <tbody ng-repeat="info in data | orderBy : price | filter : {categories: category} | filter: {name: searchTerm}" >
       <tr>
         <td><img src="{{info.imageUrl}}" alt="" /></td>
         <td>

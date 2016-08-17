@@ -15,8 +15,8 @@ app.config(function($routeProvider) {
 /*
 
 HOME
-- Search by category
-- Search by name
+- Search by category X
+- Search by name X
 - Sort by price
 - Add to cart
 - tweaks:
