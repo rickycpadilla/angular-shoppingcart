@@ -3,10 +3,11 @@
     <thead>
       <tr>
         <th>Tea</th>
-        <th>Information</th>
+        <th>Information
+        </th>
       </tr>
     </thead>
-    <tbody ng-repeat="info in data | filter : category" >
+    <tbody ng-repeat="info in data | filter : {categories: category} | filter: {name: searchTerm}" >
       <tr>
         <td><img src="{{info.imageUrl}}" alt="" /></td>
         <td>
