@@ -28,13 +28,17 @@
           </p>
         </td>
         <td>
-          {{info.quantity}}
+          <span ng-hide="edit.showing">{{info.quantity}}</span>
+          <form ng-show="edit.showing" action="index.html" method="post">
+            <input ng-model="edit.newQ" type="number" style="width: 40px" name="name">
+          </form>
         </td>
         <td>
           {{info.quantity * info.price/100 | currency}}
         </td>
         <td>
-          <button type="button" class="btn btn-warning">Edit</button>
+          <button ng-click="edit.toggle()" ng-hide="edit.showing" type="button" class="btn btn-warning">Edit</button>
+          <button ng-click="edit.update($index, edit.newQ)" ng-show="edit.showing" type="button" class="btn btn-success">Save</button>
           <button ng-click="remove($index)" type="button" class="btn btn-danger">Remove</button>
         </td>
       </tr>

@@ -10,11 +10,9 @@ app.controller("ResultsController",
       AddToCartService.addToCart(item, quantity);
       $rootScope.$broadcast('update');
     };
-    // console.log("$scope.searchTerm = " + $scope.searchTerm);
-    // console.log("$scope.category=  " + $scope.category);
-})
+});
 
-app.controller('CartController', function($scope, $rootScope, AddToCartService){
+app.controller('CartController', function($scope, $rootScope, $route, AddToCartService){
   $scope.data = AddToCartService.cartItems;
   $scope.total = 0;
   for (var i = 0; i < $scope.data.length; i++) {
@@ -24,6 +22,16 @@ app.controller('CartController', function($scope, $rootScope, AddToCartService){
   $scope.remove = function(i){
     AddToCartService.removeFromCart(i);
     $rootScope.$broadcast('update');
+    $route.reload()
+  };
+  $scope.edit = {};
+  $scope.edit.showing = false;
+  $scope.edit.toggle = function(){
+    $scope.edit.showing = !$scope.edit.showing
+  };
+  $scope.edit.update = function(i, newQuantity){
+    AddToCartService.update(i, newQuantity);
+    $route.reload()
   }
 });
 

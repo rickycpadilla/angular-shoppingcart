@@ -2,7 +2,6 @@ app.factory('CatService', function () {
   return {
     category: "",
     catSort: function (category) {
-      // console.log(category);
       this.category = category;
     }
   }
@@ -12,7 +11,6 @@ app.factory('SearchService', function () {
   return {
     search: "",
     searchBy: function (term) {
-      console.log(term);
       this.search = term.search;
     }
   }
@@ -24,12 +22,12 @@ app.factory('AddToCartService', function(){
     addToCart: function(item, quantity){
       item.quantity = quantity;
       this.cartItems.push(item);
-      console.log(this.cartItems);
     },
     removeFromCart: function(i){
       this.cartItems.splice(i, 1);
-      console.log("removed");
-      console.log(this.cartItems);
+    },
+    update: function(i, newQuantity){
+      this.cartItems[i].quantity = newQuantity;
     }
   }
 })
