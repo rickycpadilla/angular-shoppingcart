@@ -1,24 +1,32 @@
-app.controller("ResultsController", function($scope, $window, CatService, SearchService){
-  $scope.data = data;
-  $scope.category = CatService.category;
-  $scope.searchTerm = SearchService.search;
-  console.log("$scope.searchTerm = " + $scope.searchTerm);
-  // console.log("$scope.category=  " + $scope.category);
+app.controller("ResultsController",
+  function($scope, $window, CatService, SearchService, AddToCartService){
+    $scope.data = data;
+    $scope.category = CatService.category;
+    $scope.searchTerm = SearchService.search;
+    $scope.form = {};
+    $scope.add = function(item, quantity){
+      AddToCartService.addToCart(item, quantity)
+    };
+    // console.log("$scope.searchTerm = " + $scope.searchTerm);
+    // console.log("$scope.category=  " + $scope.category);
 })
 
-app.controller('ShowController', function($scope, $http, $routeParams){
-  var movieID = $routeParams.id;
-  $scope.movieInfo = {};
-  $http.get('http://www.omdbapi.com/?i=' + movieID + '&plot=short&r=json').then(function(data){
-    $scope.movieInfo.info = data.data
-  });
+app.controller('CartController', function($scope, AddToCartService){
+  $scope.data = AddToCartService.cartItems;
+  $scope.total = 0;
+  for (var i = 0; i < $scope.data.length; i++) {
+    var sub = $scope.data[i].quantity * $scope.data[i].price;
+    $scope.total += sub;
+  }
 });
 
 app.controller("NavController", function($scope, $location, $route, CatService, SearchService){
   $scope.categorySorter = "";
   $scope.changeCategory = function(category){
     CatService.catSort(category);
-    $route.reload()
+    SearchService.searchBy("")
+    $route.reload();
+    $location.path('/');
   };
   $scope.categories = [];
   for (var i = 0; i < data.length; i++) {
@@ -32,7 +40,8 @@ app.controller("NavController", function($scope, $location, $route, CatService, 
   $scope.submit = function(input){
     console.log("input = " + input);
     SearchService.searchBy(input);
-    $route.reload()
+    CatService.catSort("")
+    $route.reload();
     $location.path('/');
   }
 })

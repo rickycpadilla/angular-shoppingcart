@@ -24,5 +24,14 @@ HOME
   - in stock X
 
 CART
--
+- Add item to cart w/ right quantity
+- Update cart button
+- have items display in cart
+- subtotal display
+- quantity display
+- edit quantity
+- remove item
+- total display
+
+
 */

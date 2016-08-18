@@ -17,3 +17,14 @@ app.factory('SearchService', function () {
     }
   }
 });
+
+app.factory('AddToCartService', function(){
+  return {
+    cartItems: [],
+    addToCart: function(item, quantity){
+      item.quantity = quantity;
+      this.cartItems.push(item);
+      console.log(item);
+    }
+  }
+})
