@@ -14,12 +14,16 @@ app.controller("ResultsController",
     // console.log("$scope.category=  " + $scope.category);
 })
 
-app.controller('CartController', function($scope, AddToCartService){
+app.controller('CartController', function($scope, $rootScope, AddToCartService){
   $scope.data = AddToCartService.cartItems;
   $scope.total = 0;
   for (var i = 0; i < $scope.data.length; i++) {
     var sub = $scope.data[i].quantity * $scope.data[i].price;
     $scope.total += sub;
+  };
+  $scope.remove = function(i){
+    AddToCartService.removeFromCart(i);
+    $rootScope.$broadcast('update');
   }
 });
 

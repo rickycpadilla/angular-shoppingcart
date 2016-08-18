@@ -25,6 +25,11 @@ app.factory('AddToCartService', function(){
       item.quantity = quantity;
       this.cartItems.push(item);
       console.log(this.cartItems);
+    },
+    removeFromCart: function(i){
+      this.cartItems.splice(i, 1);
+      console.log("removed");
+      console.log(this.cartItems);
     }
   }
 })
