@@ -49,7 +49,7 @@ app.controller("NavController",
       for (var j = 0; j < data[i].categories.length; j++) {
         if($scope.categories.indexOf(data[i].categories[j]) < 0){
           $scope.categories.push(data[i].categories[j])
-      }
+        }
       }
     };
     $scope.form = {};
