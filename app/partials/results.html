@@ -21,9 +21,9 @@
           <div class="name">
             <span>{{info.name}}</span>
           </div>
-          <form ng-submit="add(info, form.quantity)" class="add">
+          <form ng-submit="add(info, info.form.quantity)" class="add">
             <span>Quantity</span>
-            <select ng-model="form.quantity" name=info.name style="font-size: 1em">
+            <select ng-model="info.form.quantity" name=info.name style="font-size: 1em">
               <option>1</option>
               <option>2</option>
               <option>3</option>

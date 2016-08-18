@@ -24,7 +24,7 @@ app.factory('AddToCartService', function(){
     addToCart: function(item, quantity){
       item.quantity = quantity;
       this.cartItems.push(item);
-      console.log(item);
+      console.log(this.cartItems);
     }
   }
 })
